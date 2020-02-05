@@ -28,44 +28,39 @@ function init() {
     board = ['sq','sq','sq','sq','sq','sq','sq','sq','sq']
     turn = 1;
 }
-  
-  //unction placeMark(event) {
-    
-//   register which player (1,-1) played and assign a value according 
-//   var idx = parseInt(evt.target.id.replace('sq', ''));   replaces where the player clicks with X or O 
-//}
 
 function isWinner() {
-   if (board[0]+board[1]+board[2] === 3 || board[0]+board[4]+board[8] === 3 || board[0]+board[3]+board[6] === 3 || board[2]+board[4]+board[6] === 3 || board[2]+board[5]+board[8] === 3 || board[6]+board[7]+board[8] === 3 || board[3]+board[4]+board[5] === 3)
+    if (board[0]+board[1]+board[2] === 3 || board[0]+board[4]+board[8] === 3 || board[0]+board[3]+board[6] === 3 || board[2]+board[4]+board[6] === 3 || board[2]+board[5]+board[8] === 3 || board[6]+board[7]+board[8] === 3 || board[3]+board[4]+board[5] === 3)
     {
         document.getElementById("message").innerHtml = ("Player One Wins!!")
     } else if (board[0]+board[1]+board[2] === 3 || board[0]+board[4]+board[8] === 3 || board[0]+board[3]+board[6] === 3 || board[2]+board[4]+board[6] === 3 || board[2]+board[5]+board[8] === 3 || board[6]+board[7]+board[8] === 3 || board[3]+board[4]+board[5] === 3)
-     {
+    {
         document.getElementById("message").innerHtml = ("Player Two Wins!!")
-     } else togglePlayer();
+    } else togglePlayer();
 } 
- 
- 
- function onClick(event) {
-     let squareIdx = event.target.id.replace("sq","");
-     if (board[squareIdx]===1) {
-         document.getElementById(squareIdx).innerHTML = "X";
-        } else if (board[squareIdx]===-1) {
-            document.getElementById(squareIdx).innerHTML = "O";
+
+
+function onClick(event) {
+    let squareIdx = event.target.id.replace("sq","");
+    if (board[squareIdx]===1) {
+        document.getElementById(squareIdx).innerHTML = "X";
+    } else if (board[squareIdx]===-1) {
+        document.getElementById(squareIdx).innerHTML = "O";
     } else  isWinner();
 }
 
 
-      
+
 function togglePlayer() {
     turn *= -1
 }
-    
 
 
+
+//function placeMark(event) {
 
 //function reset() {
-//let board=document.getElementsByClassName("board");
+    //let board=document.getElementsByClassName("board");
 //for (var i=0; i<board.length; i++) {
 //board[i].innerHTML = "";
 //}
