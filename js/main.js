@@ -7,9 +7,8 @@
 // Variables might include (board/turn/winner)
 //let gameMarker = "X";
 //let board = document.querySelectorAll('.board');
-let board , winner;
-let turn = 1;
-let player = ("1", "-1");
+let board, turn = 1;
+//let player = ("1", "-1");
 /*------Cached Element References------*/
 
 // You might choose to put your game status here
@@ -26,7 +25,7 @@ document.getElementById('squares').addEventListener('click', onClick);
 init();
 
 function init() {
-    board = [null,null,null,null,null,null,null,null,null]
+    board = ['sq','sq','sq','sq','sq','sq','sq','sq','sq']
     turn = 1;
 }
   
@@ -48,12 +47,12 @@ function isWinner() {
  
  
  function onClick(event) {
-    let squareIdx = event.target.id.replace("sq","");
-    if (board[squareIdx]) {
-        
-    }
-    
-    isWinner();
+     let squareIdx = event.target.id.replace("sq","");
+     if (board[squareIdx]===1) {
+         document.getElementById(squareIdx).innerHTML = "X";
+        } else if (board[squareIdx]===-1) {
+            document.getElementById(squareIdx).innerHTML = "O";
+    } else  isWinner();
 }
 
 
