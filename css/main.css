@@ -13,9 +13,6 @@ body {
     margin: auto;
 
 }
-.board:hover {
-    background-color: cornflowerblue;
-}
 
 div {
     border: 3px solid black;

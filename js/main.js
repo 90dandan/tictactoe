@@ -1,27 +1,15 @@
 /*------Constants------*/
-const colors = null;
-const players = {
-    '1': {
-        name: 'X',
-        //img: ,
-        score: 0,
-        turn: false,
-    },
-    '-1': {
-        name: 'O',
-        //img: ,
-        score: 0,
-        turn: true,
-    }
-}
+       
 
-//const cellEl = document.querySelectorAll('section.board')
 
-/*------Variables (state)------*/
+/*-----Variables (state)------*/
 
 // Variables might include (board/turn/winner)
-let board, togglePlayer, winner; 
-let playerTurn = false; 
+//let gameMarker = "X";
+//let board = document.querySelectorAll('.board');
+let board , winner;
+let turn = 1;
+let player = ("1", "-1");
 /*------Cached Element References------*/
 
 // You might choose to put your game status here
@@ -31,33 +19,68 @@ let playerTurn = false;
 
 // This is where you should put the event listener
 // for a mouse-click
-document.querySelectorById("squares").addEventListener('click', onClick);
-//event.target.id
+document.getElementById('squares').addEventListener('click', onClick);
+
 /*------Functions------*/
 
 function init() {
-//    board = ['null','null','null','null','null','null','null','null','null',]
-//    turn = false;
-//     
-//}
+    board = [null,null,null,null,null,null,null,null,null]
+    turn = 1;
+}
   
-  function onClick(event) {
+  //unction placeMark(event) {
+    
 //   register which player (1,-1) played and assign a value according 
 //   var idx = parseInt(evt.target.id.replace('sq', ''));   replaces where the player clicks with X or O 
 //}
 
 function isWinner() {
-   // if ['sq0' + 'sq1' + 'sq2' = 3 || 'sq0' + 'sq4' + 'sq8' = 3 || 'sq0' + 'sq3' + 'sq6' = 3 || 'sq2' + 'sq4' + 'sq6' = 3 || 'sq2' + 'sq5' + 'sq8' = 3 || 'sq6' + 'sq7' + 'sq8' = 3 || 'sq3' + 'sq4' + 'sq5' = 3]
-   //winner = '1' message
-    // } else ['sq0' + 'sq1' + 'sq2' = -3 || 'sq0' + 'sq4' + 'sq8' = -3 || 'sq0' + 'sq3' + 'sq6' = -3 || 'sq2' + 'sq4' + 'sq6' = -3 || 'sq2' + 'sq5' + 'sq8' = -3 || 'sq6' + 'sq7' + 'sq8' = -3 || 'sq3' + 'sq4' + 'sq5' = -3]
-    //winner = '-1' message
-    //} 
-//} render: togglePlayer
+   if (board[0]+board[1]+board[2] === 3 || board[0]+board[4]+board[8] === 3 || board[0]+board[3]+board[6] === 3 || board[2]+board[4]+board[6] === 3 || board[2]+board[5]+board[8] === 3 || board[6]+board[7]+board[8] === 3 || board[3]+board[4]+board[5] === 3)
+    {
+        document.getElementById("message").innerHtml = ("Player One Wins!!")
+    } else if (board[0]+board[1]+board[2] === 3 || board[0]+board[4]+board[8] === 3 || board[0]+board[3]+board[6] === 3 || board[2]+board[4]+board[6] === 3 || board[2]+board[5]+board[8] === 3 || board[6]+board[7]+board[8] === 3 || board[3]+board[4]+board[5] === 3)
+     {
+        document.getElementById("message").innerHtml = ("Player Two Wins!!")
+     } else togglePlayer();
+} 
+ 
+ 
+ function onClick(event) {
+    //  console.log(event.target.id)
+     let squareIdx = parseInt(event.target.id.replace("sq",""));
+     console.log(squareIdx);
+      if (board[squareIdx]){ 
+       // board[squareIdx] = turn
+      }
+      isWinner();
+    }
 
 
-function togglePlayer(event) {
-    // if turn 
-    // 
+      
+function togglePlayer() {
+    turn *= -1
+}
+    
+
+
+
+//function reset() {
+//let board=document.getElementsByClassName("board");
+//for (var i=0; i<board.length; i++) {
+//board[i].innerHTML = "";
+//}
+//}
+    
+//function changeToX() {
+//when (gameMarker === "X") {
+//gameMarker = "Y"} 
+//}
+//function changeToO() {
+//  gameMarker = "O";   
+//}
+
+//function placeMark(myDiv) {
+//    document.getElementById(myDiv).innerText = gameMarker;
 //}
 
 // Some functions you might choose to use:
