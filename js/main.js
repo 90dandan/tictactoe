@@ -23,6 +23,8 @@ document.getElementById('squares').addEventListener('click', onClick);
 
 /*------Functions------*/
 
+init();
+
 function init() {
     board = [null,null,null,null,null,null,null,null,null]
     turn = 1;
@@ -46,14 +48,13 @@ function isWinner() {
  
  
  function onClick(event) {
-    //  console.log(event.target.id)
-     let squareIdx = parseInt(event.target.id.replace("sq",""));
-     console.log(squareIdx);
-      if (board[squareIdx]){ 
-       // board[squareIdx] = turn
-      }
-      isWinner();
+    let squareIdx = event.target.id.replace("sq","");
+    if (board[squareIdx]) {
+        
     }
+    
+    isWinner();
+}
 
 
       
